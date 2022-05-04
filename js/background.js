@@ -54,4 +54,9 @@ function sendMessage(tabId, msg){
   else chrome.runtime.sendMessage(sender.id, msg);
 }
 
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+    sendMessage(tabId, {"command": "initTwitterBtns"});
+   
+}); 
+
 

@@ -10,8 +10,12 @@ var myTwitterPage = {
   onExtMessage: function(message, sender, sendResponse){
     myTwitterPage.message = message;
     switch (message.command) {
-      case "twitter_page":
-      myTwitterPage.load();
+      case "initTwitterBtns":
+      $('[tweet-consider="1"]').removeAttr('tweet-consider');
+      var injectNode = $('a[href$="/header_photo"]');
+      $(injectNode).children().show();
+      $('.slider').remove();
+      $('.modal-container ul').remove();
       break;
 
     }
@@ -30,41 +34,45 @@ var myTwitterPage = {
     return output;
   },
   addTwitterBtn: function(message, sender, sendResponse){
-    
-   /*var postSelector = [
-   'div[aria-label="Profile timelines"]'
-   ].join(', ');*/
-
    var twitContainer = $('nav[aria-label="Profile timelines"]');
    $(twitContainer).each(function () {
     var tweetContainer = $(this).closest('div[data-testid="primaryColumn"]');
     if (tweetContainer.attr('tweet-consider') != '1') {
       var connectWalletWrapper = $('<div style="text-align: right; position: absolute;right: 300px;"><a  href="javascript:;" class="buttonRoomTwitter">Room</a></div>');
-
       $(connectWalletWrapper).click(function (e) {
         var twitter_name = myTwitterPage.parseUsername(location.href);
-        myTwitterPage.getUserInfo(twitter_name);
+        if ($('.modal-container ul li').length != 0) {
+          myTwitterPage.initModalBox();
+        }else{
+          myTwitterPage.getUserInfo(twitter_name);
+        }
       });
 
       var A = tweetContainer.find('div[data-testid="placementTracking"]');
       A.prepend(connectWalletWrapper); 
       tweetContainer.attr('tweet-consider', 1); 
-          //myTwitterPage.initEvents();
-        }
+      
+    }
 
-
-      });
-
+  });
 
  },  
+ 
  initEvents:function(){
 
-  $(".buttonRoomTwitter").on('click', function(e) {
-   e.preventDefault(); 
-   myTwitterPage.initModalBox();
- });
-},
-getUserInfo:function(twitter_name){
+   $('a[href$="/header_photo"]').on('click', function(e) {
+     e.preventDefault(); 
+   });
+
+   $('.buttonRoomSolana').off().on('click', function(e) {
+    var vr = $(this).attr('vr');
+    $.fancybox.close();
+    myTwitterPage.showVrBanner(vr);
+  });
+
+
+ },
+ getUserInfo:function(twitter_name){
   $('body').append('<div class="loading"></div>');
   sendMessage({"command": "getInfoByWalletAddress","data":twitter_name},function(result){
     $('body').find('.loading').remove();
@@ -74,7 +82,7 @@ getUserInfo:function(twitter_name){
       for (var i = 0; i < data.length; i++) {
         var VR = consts.roomVR+result.username+'/room/'+i;
         var title = data[i]['title'];
-        var roomVrFrame = `<a data-fancybox data-type="iframe"  data-src=`+VR+` data-width="1500" data-height="400" href="javascript:;" class="buttonRoomSolana">`+title+`</a>`;
+        var roomVrFrame = `<a  href="javascript:;" class="buttonRoomSolana" vr=`+VR+`>`+title+`</a>`;
         list +=`<li>`+roomVrFrame+`</li>`
       }
 
@@ -91,60 +99,73 @@ getUserInfo:function(twitter_name){
       <div class="error">`+result.response+`</div>`;
       $('.modal-container').html(errorHtml);
     }
-    myTwitterPage.initModalBox();      
+    myTwitterPage.initModalBox();  
+    myTwitterPage.initEvents();    
   })
 
 },
-initModalBox:function(){
-  $.fancybox.open({
-    src  : '#hidden-content-1',
-    type : 'inline',
-    opts : {
-      afterShow : function( instance, current ) {
-        console.info('done!');
+showVrBanner:function(vr){
+  var VR = vr;
+  var carousel= `<div class="slider">
+  <ul><li class="c">  <iframe width="600" height="200" src="`+VR+`" rameborder="0" ></iframe> </li></ul></div>`;
+  
+      //show room crausal here
+      var injectNode = $('a[href$="/header_photo"]');
+      $(injectNode).children().hide();
+      injectNode.prepend(carousel)
+      myTwitterPage.initEvents()
+
+      },
+      initModalBox:function(){
+        $.fancybox.open({
+          src  : '#hidden-content-1',
+          type : 'inline',
+          opts : {
+            afterShow : function( instance, current ) {
+              console.info('done!');
+            }
+          }
+        });
+
+      },
+      startchekingTwitter: function(){
+        const isPageFocused = document.visibilityState == "visible" ? true : false;
+
+        if ( isPageFocused == true ) {
+          myTwitterPage.addTwitterBtn();
+        }    
+        setTimeout(function(){
+          myTwitterPage.startchekingTwitter();
+        }, 1500);
+
       }
+
+
+    };
+
+    chrome.runtime.onMessage.addListener(myTwitterPage.onExtMessage);
+
+    window.addEventListener('RecieveWallate', function(evt) {
+      if (evt.detail.msg=="recieve-wallet") {
+        localStorage.setItem('wallet-address',evt.detail.address);
+        $.fancybox.close();
+        myTwitterPage.getUserInfo()
+
+      }
+
+
+    })
+    $(document).ready(function(){
+      setTimeout(function(){
+        myTwitterPage.load();    
+      },2000);
+    });
+
+    function sendMessage(msg, callbackfn) {
+      if(callbackfn!=null) {
+        callback.push(callbackfn);
+        msg.callback = "yes";
+      }
+      chrome.runtime.sendMessage(msg,callbackfn);
     }
-  });
-
-},
-startchekingTwitter: function(){
-  const isPageFocused = document.visibilityState == "visible" ? true : false;
-
-  if ( isPageFocused == true ) {
-    myTwitterPage.addTwitterBtn();
-  }    
-  setTimeout(function(){
-    myTwitterPage.startchekingTwitter();
-  }, 1500);
-
-}
-
-
-};
-
-chrome.runtime.onMessage.addListener(myTwitterPage.onExtMessage);
-
-window.addEventListener('RecieveWallate', function(evt) {
-  if (evt.detail.msg=="recieve-wallet") {
-    localStorage.setItem('wallet-address',evt.detail.address);
-    $.fancybox.close();
-    myTwitterPage.getUserInfo()
-    
-  }
-
-
-})
-$(document).ready(function(){
-  setTimeout(function(){
-    myTwitterPage.load();    
-  },2000);
-});
-
-function sendMessage(msg, callbackfn) {
-  if(callbackfn!=null) {
-    callback.push(callbackfn);
-    msg.callback = "yes";
-  }
-  chrome.runtime.sendMessage(msg,callbackfn);
-}
 

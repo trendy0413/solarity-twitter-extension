@@ -271,3 +271,68 @@
 			background-color: #FFCCBA;
 			background-image: url('https://i.imgur.com/GnyDvKN.png');
 		}
+
+/*carousel banner csss*/
+ .chat_loading_screen_profile__fWSrN {
+    overflow: hidden !important;
+  }
+.slider{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  margin:20px auto 0 auto;
+}
+
+.slider ul{
+  position:relative;
+  width:100%;
+  margin:0;
+  padding:0;
+  height:200px;
+  display:inline-block;
+  list-style:none;
+  
+}
+
+
+.slider ul li{
+  position:relative;
+  float:left;
+  display:inline-block;
+  margin:0;
+  padding:0;
+  width:100%;
+  max-width: 600px;
+  height:250px;
+  overflow:hidden; 
+  text-align:center;
+  line-height:250px;
+  color:#333;
+}
+
+
+.control{
+  position: absolute;
+  top: 40%;
+  z-index: 999;
+  display: block;
+  padding: 4% 3%;
+  width: auto;
+  height: auto;
+  background: #2a2a2a;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.prev{
+  left:0px;
+}
+
+.next{
+  right:0px;
+}
+

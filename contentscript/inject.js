@@ -5,9 +5,7 @@
  };
  (document.head || document.documentElement).appendChild(s);
 
-
-
- $('body').append(`<a href="javascript:;" class="btn" id="hidden-content-1" style="display:none">
+  $('body').append(`<a href="javascript:;" class="btn" id="hidden-content-1" style="display:none">
  	<div class="modal-container">
  	
  	<div class="container-copy">
