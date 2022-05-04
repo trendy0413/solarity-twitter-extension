@@ -1,2 +1,2 @@
-# solarirty-twitter-extension
+# solarity-twitter-extension
  Twitter extension for Solarity
