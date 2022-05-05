@@ -5,17 +5,17 @@
 	padding: 10px 25px;
 	background-color: rgb(29, 161, 242);;
 	color: white;
-  	cursor: pointer;
-	font-family: sans-serif;
-	text-decoration: none;
-	font-size: 0.9em;
-	text-align: center;
-	text-indent: 0px;
-	    top: 0;
-    right: 150%;
+ cursor: pointer;
+ font-family: sans-serif;
+ text-decoration: none;
+ font-size: 0.9em;
+ text-align: center;
+ text-indent: 0px;
+ top: 0;
+ right: 150%;
 
 }
-
+ 
 .buttonRoomTwitter:hover {
 	background-color: #333;
 	color: white;
@@ -50,30 +50,30 @@
 
 #hidden-content-1{
 	width: 400px;
-    height: 300px;
-    text-align: center;
+  height: 300px;
+  text-align: center;
 }
 .cnt-btn{
 	background: #FF6666;
-    border-width: 0;
-    color: #fff;
-    text-decoration: none;
-    padding: 7px 20px;
-    line-height: 1.5;
-    border-radius: 20px;
-    text-transform: uppercase;
-    font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 80%;
-    font-weight: 700;
-    margin: 5px 5px 5px 0;
-    display: inline-block;
-    cursor: pointer;
-    outline: none;
-    transition: all .2s ease-in-out;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+  border-width: 0;
+  color: #fff;
+  text-decoration: none;
+  padding: 7px 20px;
+  line-height: 1.5;
+  border-radius: 20px;
+  text-transform: uppercase;
+  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 80%;
+  font-weight: 700;
+  margin: 5px 5px 5px 0;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  transition: all .2s ease-in-out;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 
@@ -143,7 +143,7 @@
   opacity: 1;
   will-change: opacity, transform;
   -webkit-animation: showcopied 1.5s ease;
-          animation: showcopied 1.5s ease;
+  animation: showcopied 1.5s ease;
 }
 .container-copy #inviteCode.invite-page #copy:hover {
   cursor: pointer;
@@ -184,15 +184,15 @@
 /*list group*/
 
 .list-group {
-     width: 100%;
-    list-style: none;
-    margin-top: 10%;
-    padding: 0px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: rgb(204, 204, 204);
-    border-image: initial;
-    border-radius: 0.5em;
+ width: 100%;
+ list-style: none;
+ margin-top: 10%;
+ padding: 0px;
+ border-width: 1px;
+ border-style: solid;
+ border-color: rgb(204, 204, 204);
+ border-image: initial;
+ border-radius: 0.5em;
 }
 .list-group li {
   border-top: 1px solid #ccc;
@@ -232,57 +232,55 @@
 
 @-webkit-keyframes rotate {
   /* 100% keyframe for  clockwise. 
-     use 0% instead for anticlockwise */
+  use 0% instead for anticlockwise */
   100% {
     -webkit-transform: rotate(360deg);
   }
 }
 
- 
-		.info, .success, .warning, .error, .validation {
-			border: 1px solid;
-			margin: 10px 0px;
-			padding: 15px 10px 15px 50px;
-			background-repeat: no-repeat;
-			background-position: 10px center;
-		}
-		.info {
-			color: #00529B;
-			background-color: #BDE5F8;
-			background-image: url('https://i.imgur.com/ilgqWuX.png');
-		}
-		.success {
-			color: #4F8A10;
-			background-color: #DFF2BF;
-			background-image: url('https://i.imgur.com/Q9BGTuy.png');
-		}
-		.warning {
-			color: #9F6000;
-			background-color: #FEEFB3;
-			background-image: url('https://i.imgur.com/Z8q7ww7.png');
-		}
-		.error{
-			color: #D8000C;
-			background-color: #FFBABA;
-			background-image: url('https://i.imgur.com/GnyDvKN.png');
-		}
-		.validation{
-			color: #D63301;
-			background-color: #FFCCBA;
-			background-image: url('https://i.imgur.com/GnyDvKN.png');
-		}
+
+.info, .success, .warning, .error, .validation {
+ border: 1px solid;
+ margin: 10px 0px;
+ padding: 15px 10px 15px 50px;
+ background-repeat: no-repeat;
+ background-position: 10px center;
+}
+.info {
+ color: #00529B;
+ background-color: #BDE5F8;
+ background-image: url('https://i.imgur.com/ilgqWuX.png');
+}
+.success {
+ color: #4F8A10;
+ background-color: #DFF2BF;
+ background-image: url('https://i.imgur.com/Q9BGTuy.png');
+}
+.warning {
+ color: #9F6000;
+ background-color: #FEEFB3;
+ background-image: url('https://i.imgur.com/Z8q7ww7.png');
+}
+.error{
+ color: #D8000C;
+ background-color: #FFBABA;
+ background-image: url('https://i.imgur.com/GnyDvKN.png');
+}
+.validation{
+ color: #D63301;
+ background-color: #FFCCBA;
+ background-image: url('https://i.imgur.com/GnyDvKN.png');
+}
 
 /*carousel banner csss*/
- .chat_loading_screen_profile__fWSrN {
-    overflow: hidden !important;
-  }
+.chat_loading_screen_profile__fWSrN {
+  overflow: hidden !important;
+}
 .slider{
   position:relative;
   width:100%;
   overflow:hidden;
-  margin:20px auto 0 auto;
 }
-
 .slider ul{
   position:relative;
   width:100%;

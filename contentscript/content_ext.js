@@ -70,6 +70,7 @@ var myTwitterPage = {
     myTwitterPage.showVrBanner(vr);
   });
 
+ 
 
  },
  getUserInfo:function(twitter_name){
@@ -107,7 +108,7 @@ var myTwitterPage = {
 showVrBanner:function(vr){
   var VR = vr;
   var carousel= `<div class="slider">
-  <ul><li class="c">  <iframe width="600" height="200" src="`+VR+`" rameborder="0" ></iframe> </li></ul></div>`;
+  <ul><li class="c">  <iframe width="600" height="200" src="`+VR+`" rameborder="0" id="vr-frame"></iframe> </li></ul></div>`;
   
       //show room crausal here
       var injectNode = $('a[href$="/header_photo"]');
