@@ -15,7 +15,12 @@
  right: 150%;
 
 }
- 
+.room-selected, .room-selected a{
+  background-color: rgb(29, 161, 242);
+  color: #fff;
+}
+
+
 .buttonRoomTwitter:hover {
 	background-color: #333;
 	color: white;
@@ -280,7 +285,7 @@
   position:relative;
   width:100%;
   overflow:hidden;
-  height:300px;
+  height:320px;
 }
 .slider ul{
   position:relative;
@@ -302,7 +307,7 @@
   padding:0;
   width:100%;
   max-width: 600px;
-  height:300px;
+  height:320px;
   overflow:hidden; 
   text-align:center;
   line-height:250px;
