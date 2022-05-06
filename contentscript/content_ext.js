@@ -108,7 +108,7 @@ var myTwitterPage = {
 showVrBanner:function(vr){
   var VR = vr;
   var carousel= `<div class="slider">
-  <ul><li class="c">  <iframe width="600" height="400" src="`+VR+`" rameborder="0" id="vr-frame"></iframe> </li></ul></div>`;
+  <ul><li class="c">  <iframe width="600" height="300" src="`+VR+`" rameborder="0" id="vr-frame"></iframe> </li></ul></div>`;
   
       //show room crausal here
       var injectNode = $('a[href$="/header_photo"]');
