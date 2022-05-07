@@ -38,6 +38,7 @@ var myTwitterPage = {
    $(twitContainer).each(function () {
     var tweetContainer = $(this).closest('div[data-testid="primaryColumn"]');
     if (tweetContainer.attr('tweet-consider') != '1') {
+      tweetContainer.attr('tweet-consider', 1);
       var connectWalletWrapper = $('<div style="text-align: right; position: absolute;right: 300px;"><a  href="javascript:;" class="buttonRoomTwitter">Room</a></div>');
       $(connectWalletWrapper).click(function (e) {
         var twitter_name = myTwitterPage.parseUsername(location.href);
@@ -53,7 +54,7 @@ var myTwitterPage = {
       var A = tweetContainer.find('div[data-testid="placementTracking"]');
       A.prepend(connectWalletWrapper); 
 
-      tweetContainer.attr('tweet-consider', 1); 
+       
       var twitter_name = myTwitterPage.parseUsername(location.href)
       myTwitterPage.getUserInfo(twitter_name);  
     }
@@ -115,8 +116,11 @@ var myTwitterPage = {
 },
 showVrBanner:function(vr){
   var VR = vr;
+  
+  var vrFrame=`<iframe frameborder="0" vspace="0" hspace="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" allowtransparency="true" src="`+VR+`"  id="vr-frame" scrolling="no" width="100%" height="100%"></iframe>`;
+  
   var carousel= `<div class="slider">
-  <ul><li class="c">  <iframe width="600" height="320" src="`+VR+`" rameborder="0" id="vr-frame"></iframe> </li></ul></div>`;
+  <ul><li class="c"> `+vrFrame+` </li></ul></div>`;
   //show room crausal here
   var injectNode = $('a[href$="/header_photo"]');
   $('.slider').remove();
