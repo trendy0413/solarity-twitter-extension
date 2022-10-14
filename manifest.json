@@ -38,6 +38,7 @@
   }
 
 ],
+ 
 
 "content_security_policy": "script-src 'self' https://aframe.io https://unpkg.com/ https://cdn.jsdelivr.net/ https://solarity.muhash.com/api/ 'unsafe-inline' 'unsafe-eval'" ,
 "short_name": "Twitter",
